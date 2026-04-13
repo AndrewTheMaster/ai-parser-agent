@@ -76,10 +76,30 @@ if [[ ! -d "$DICTIONARY_DIR" ]]; then
 fi
 
 VENV_DIR="$WORKROOT/.venv"
+LEGAL_AGENT="$VENV_DIR/bin/legal-agent"
+
 if [[ ! -d "$VENV_DIR" ]]; then
   echo "Creating virtual environment in $VENV_DIR ..."
   python3 -m venv "$VENV_DIR"
-  "$VENV_DIR/bin/pip" install -e "$PROJECT_DIR"
+fi
+
+if [[ ! -f "$LEGAL_AGENT" ]]; then
+  echo "Installing package into venv (first run or repair) ..."
+  if ! "$VENV_DIR/bin/pip" install -e "$PROJECT_DIR"; then
+    echo "pip failed; recreating virtual environment ..."
+    rm -rf "$VENV_DIR"
+    python3 -m venv "$VENV_DIR"
+    "$VENV_DIR/bin/pip" install -e "$PROJECT_DIR"
+  fi
+fi
+
+if [[ ! -f "$LEGAL_AGENT" ]]; then
+  echo ""
+  echo "ERROR: legal-agent is still missing at:"
+  echo "  $LEGAL_AGENT"
+  echo "Remove the folder and retry:"
+  echo "  rm -rf \"$VENV_DIR\""
+  exit 1
 fi
 
 INDEX_CACHE="$WORKROOT/.cache/dictionary_index.pkl"
