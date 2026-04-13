@@ -1,0 +1,153 @@
+# FDA / drug-regulation terms test set
+Food, Drug, and Cosmetic Act (FDCA)
+Controlled Substances Act (CSA)
+Comprehensive Drug Abuse Prevention and Control Act of 1970
+Prescription Drug User Fee Act (PDUFA)
+FDA Modernization Act (FDAMA)
+Orphan Drug Act
+Prescription Drug Marketing Act (PDMA)
+Durham-Humphrey Amendments
+Kefauver-Harris Amendments
+Pure Food and Drug Act
+Price Competition and Patent Restoration Act
+Federal Register
+Title II
+PL 91-513
+21 USC 801 et seq.
+federal law
+state law
+federal regulations
+state regulations
+drug control law
+legislation
+regulatory authority
+administrative agency
+jurisdiction
+interpretation of the law
+New Drug Application (NDA)
+Abbreviated New Drug Application (ANDA)
+Biologics License Application (BLA)
+supplemental NDA (SNDA)
+application
+application filed
+review process
+approval
+market approval
+fast track approval
+electronic submissions
+standardized format
+sponsor
+sponsor company
+submit an application
+amend the application
+withdraw the application
+refused application
+pending drug product application
+substantive requirements
+requirements for approval
+criteria
+criteria to be safe and effective
+substantial evidence
+compliance
+noncompliance
+regulatory requirements
+pre-market clearance
+post-marketing surveillance
+continued submission of data
+adequate evidence
+patent
+drug patent
+relevant patents
+claims
+patent has expired
+is invalid
+will not be infringed
+patent infringement
+market exclusivity
+7-year market exclusivity
+first applicant
+orphan status
+revocation of orphan status
+risk-benefit
+risks vs. benefits
+complies with the requirements
+general recognition of safety and effectiveness
+GRASE (Generally Recognized as Safe and Effective)
+not-GRASE
+misbranded
+unapproved new drug
+truthful, fairly balanced, and fully disclosed
+material facts
+misleading
+off-label use
+approved labeling
+legitimate medical purpose
+good faith
+usual course of professional practice
+corresponding responsibility
+action letter
+Approval Letter
+Approvable Letter
+Non-Approvable Letter
+warning letter
+FDA Form 483
+Form 483s
+response to findings
+written prescription
+hardcopy
+oral prescription
+orally transmitted authorization
+facsimile prescription
+Authorization for Emergency Dispensing
+Citizens Petition
+public comment
+public comment period
+Proposed Monograph
+Tentative Final Monograph
+final monograph
+inspection
+facilities inspection
+pre-inspection
+inspect premises and records
+enforcement
+violations
+violative products
+enforce the regulations
+recall
+Class I recall
+Class II recall
+Class III recall
+consumer level recall
+retail level recall
+wholesale level recall
+effectiveness checks
+removal of a product
+seizure
+initiation of a seizure
+injunction
+seek an injunction
+issuance of an injunction
+Department of Justice (DOJ)
+federal court
+court order
+consent agreement
+litigate
+U.S. Marshals
+debar
+debarment
+administrative actions
+adverse publicity
+FDA Enforcement Report
+FDA Medical Bulletin
+FDA Consumer
+record-keeping provisions
+closed system of record keeping
+maintain records
+report this activity
+adverse drug reports
+alert report
+submit within 15 working days
+reported quarterly
+reported annually
+track a sample
+diversion

@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.cache/
+output/
+output_*/
+output_simple/
+output_fda*/
+*.egg-info/
+dist/
+build/
+.env
+
+# Local dictionary content (large files, keep out of git)
+dictionaries/
+*Black*.pdf
+Blacks*.pdf
