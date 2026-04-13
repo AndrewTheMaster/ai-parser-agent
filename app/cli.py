@@ -148,6 +148,11 @@ def run_simple(
     dictionary_dir: Path = typer.Option(..., "--dictionary-dir", help="Folder with dictionary PDFs."),
     output_dir: Path = typer.Option(Path("output_simple"), "--output", "-o"),
     dictionary_glob: str = typer.Option("*.pdf", "--dictionary-glob"),
+    index_cache: Optional[Path] = typer.Option(
+        None,
+        "--index-cache",
+        help="Pickle cache path (default: .cache/dictionary_index.pkl under cwd).",
+    ),
 ) -> None:
     """
     Simple mode for non-technical users: terms in -> human-friendly table out.
@@ -157,13 +162,14 @@ def run_simple(
         raise typer.BadParameter(
             f"No dictionary PDFs matched glob {dictionary_glob!r} in {dictionary_dir}"
         )
+    cache = index_cache if index_cache is not None else Path(".cache/dictionary_index.pkl")
     results = run_lookup_only(
         terms_file=terms_file,
         dictionary_paths=dict_paths,
         output_dir=output_dir,
         enable_ru_law=False,
         ru_corpus_paths=None,
-        index_cache_path=Path(".cache/dictionary_index.pkl"),
+        index_cache_path=cache,
         cfg=load_pipeline_config(),
     )
     typer.echo(

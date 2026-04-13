@@ -56,18 +56,30 @@ legal-agent run-simple \
 
 ## Non-technical quick start
 
-1. Put dictionary PDF files into `./dictionaries`.
-2. Put your terms (one per line) into `./data/sample_terms.txt` (or any `.txt` file).
-3. Run one command:
+1. Put dictionary PDF files in **one** of these places:
+   - `./dictionaries/` (inside the project folder), or
+   - `../dictionaries/` (same parent folder as the project — handy next to a copied app folder), or
+   - **macOS + DMG:** a folder named `dictionaries` **next to the `.dmg` file`** on disk (same directory as the disk image).
+2. Put your terms (one per line) into **one** of:
+   - `terms.txt` **next to the `.dmg`** on Mac (recommended for DMG), or `words.txt` / `sample_terms.txt` / `my_terms.txt` there,
+   - or `./data/sample_terms.txt` inside the project,
+   - or `../terms.txt` next to the project folder.
+3. Run (auto-detects terms + dictionaries; optional explicit paths):
+
+```bash
+bash ./run_simple.sh
+```
+
+Explicit dictionary/output (still supported):
 
 ```bash
 bash ./run_simple.sh ./data/sample_terms.txt ./dictionaries ./output_simple
 ```
 
-Result file: `./output_simple/results_human.xlsx`
+Result file: by default `./output_simple/results_human.xlsx` if the project folder is writable; if you run from a **read-only DMG**, results go to `~/Library/Application Support/LegalTermsAgent/output_simple/results_human.xlsx`.
 
 Notes:
-- You do **not** need to create `.venv` manually. The script creates it automatically on first run.
+- You do **not** need to create `.venv` manually. The script creates it automatically on first run (under the project or under `~/Library/Application Support/LegalTermsAgent` on read-only media).
 - If the executable bit is missing after copying project files, use `bash ./run_simple.sh ...` (works without `chmod +x`).
 
 Outputs:

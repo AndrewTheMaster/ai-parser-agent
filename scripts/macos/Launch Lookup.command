@@ -1,35 +1,24 @@
 #!/bin/bash
-# Double-click in Finder to run (opens Terminal).
-# Edit TERMS_FILE and DICTIONARY_DIR below if needed.
+# Double-click in Finder. DMG does nothing by itself — this script runs the lookup.
+#
+# Optional env (otherwise auto-detect like run_simple.sh):
+#   TERMS_FILE=/path/to/terms.txt
+#   DICTIONARY_DIR=/path/to/dictionaries
+#   OUTPUT_DIR=/path/to/output_folder
 
 set -e
 cd "$(dirname "$0")/../.."
 
-TERMS_FILE="${TERMS_FILE:-./data/sample_terms.txt}"
-DICTIONARY_DIR="${DICTIONARY_DIR:-./dictionaries}"
-OUTPUT_DIR="${OUTPUT_DIR:-./output_simple}"
-
 echo "Project: $(pwd)"
-echo "Terms:   $TERMS_FILE"
-echo "Dicts:   $DICTIONARY_DIR"
-echo "Output:  $OUTPUT_DIR"
+echo "Mode:    auto paths unless TERMS_FILE / DICTIONARY_DIR / OUTPUT_DIR env vars are set"
 echo ""
 
-if [[ ! -f "$TERMS_FILE" ]]; then
-  echo "ERROR: Terms file not found: $TERMS_FILE"
-  read -r -p "Press Enter to close..."
-  exit 1
-fi
+T="${TERMS_FILE:-}"
+D="${DICTIONARY_DIR:-}"
+O="${OUTPUT_DIR:-}"
 
-if [[ ! -d "$DICTIONARY_DIR" ]]; then
-  echo "ERROR: Dictionary folder not found: $DICTIONARY_DIR"
-  echo "Create it and put PDF dictionaries inside."
-  read -r -p "Press Enter to close..."
-  exit 1
-fi
-
-bash ./run_simple.sh "$TERMS_FILE" "$DICTIONARY_DIR" "$OUTPUT_DIR"
+bash ./run_simple.sh "$T" "$D" "$O"
 
 echo ""
-echo "Done. Open: $OUTPUT_DIR/results_human.xlsx"
+echo "See printed paths above for results_human.xlsx"
 read -r -p "Press Enter to close..."

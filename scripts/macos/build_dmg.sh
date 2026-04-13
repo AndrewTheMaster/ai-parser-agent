@@ -50,15 +50,28 @@ chmod +x "$STAGE/$DMG_NAME/run_simple.sh" 2>/dev/null || true
 
 # Short readme on the DMG volume
 cat > "$STAGE/$DMG_NAME/START_HERE.txt" <<EOF
-Legal Terms Agent (macOS bundle in this folder)
+Legal Terms Agent (macOS)
 
-1) Put your dictionary PDF files into the "dictionaries" folder (create it next to this file if missing).
-2) Put your terms list into data/sample_terms.txt (one term per line), or edit Launch Lookup.command paths.
-3) Double-click: "scripts/macos/Launch Lookup.command"
+Where to put dictionaries (choose one):
 
-First run downloads Python dependencies (needs internet once).
+  A) Inside this app folder:  dictionaries/*.pdf
+  B) Next to this folder on disk:  ../dictionaries/*.pdf
+     (if you copied the folder to Desktop/MyAgent, use Desktop/dictionaries)
+  C) Next to the .dmg file on your Mac:
+       Desktop/LegalTermsAgent-0.1.0.dmg
+       Desktop/dictionaries/*.pdf
 
-Output: output_simple/results_human.xlsx
+Terms (one phrase per line), pick one:
+  - Same folder as the .dmg: terms.txt  (recommended), or words.txt / sample_terms.txt / my_terms.txt
+  - Or inside the app: data/sample_terms.txt
+  - Or env TERMS_FILE=/path/to/file.txt
+
+Run: double-click scripts/macos/Launch Lookup.command
+
+First run needs internet once (pip install).
+
+If the DMG is read-only, results and cache are written to:
+  ~/Library/Application Support/LegalTermsAgent/output_simple/results_human.xlsx
 
 Version: $VERSION
 EOF
