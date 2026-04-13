@@ -13,8 +13,8 @@ set -euo pipefail
 #   Dictionaries (*.pdf):
 #     - ./dictionaries, ../dictionaries, or same folder as .dmg/dictionaries (Mac)
 #
-# Read-only DMG → venv, cache, default output under:
-#   ~/Library/Application Support/LegalTermsAgent/
+# Read-only DMG → venv + cache under ~/Library/Application Support/LegalTermsAgent/
+# Default Excel output → next to the .dmg (same folder as terms.txt / dictionaries/) when possible.
 
 PROJECT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$PROJECT_DIR"
@@ -51,7 +51,7 @@ WORKROOT="$(python3 "$RESOLVE_PY" workroot "$PROJECT_DIR")"
 mkdir -p "$WORKROOT/.cache"
 
 if [[ -z "$OUTPUT_OVERRIDE" ]]; then
-  OUTPUT_DIR="$WORKROOT/output_simple"
+  OUTPUT_DIR="$(python3 "$RESOLVE_PY" output "$PROJECT_DIR")"
 else
   OUTPUT_DIR="$OUTPUT_OVERRIDE"
 fi

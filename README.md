@@ -76,7 +76,8 @@ Explicit dictionary/output (still supported):
 bash ./run_simple.sh ./data/sample_terms.txt ./dictionaries ./output_simple
 ```
 
-Result file: by default `./output_simple/results_human.xlsx` if the project folder is writable; if you run from a **read-only DMG**, results go to `~/Library/Application Support/LegalTermsAgent/output_simple/results_human.xlsx`.
+Result file: `./output_simple/results_human.xlsx` inside the project when writable.  
+If you run from a **read-only DMG**, the Excel report is written **next to the `.dmg` file`** (same folder as `terms.txt` / `dictionaries/`): `output_simple/results_human.xlsx` there. Only if that folder is not writable does it fall back to `~/Library/Application Support/LegalTermsAgent/output_simple/`.
 
 Notes:
 - You do **not** need to create `.venv` manually. The script creates it automatically on first run (under the project or under `~/Library/Application Support/LegalTermsAgent` on read-only media).

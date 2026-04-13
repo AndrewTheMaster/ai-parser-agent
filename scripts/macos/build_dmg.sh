@@ -70,7 +70,10 @@ Run: double-click scripts/macos/Launch Lookup.command
 
 First run needs internet once (pip install).
 
-If the DMG is read-only, results and cache are written to:
+If the DMG is read-only: venv + cache live under ~/Library/Application Support/LegalTermsAgent/
+Results (Excel) are written next to the .dmg when possible:
+  <same folder as your .dmg>/output_simple/results_human.xlsx
+If that folder is not writable, results fall back to:
   ~/Library/Application Support/LegalTermsAgent/output_simple/results_human.xlsx
 
 Version: $VERSION

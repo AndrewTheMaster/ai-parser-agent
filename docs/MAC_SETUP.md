@@ -22,12 +22,13 @@
 
 ## Куда пишется результат
 
-- Если папка проекта **доступна для записи** → по умолчанию  
-  `<проект>/output_simple/results_human.xlsx`  
-  (или путь из третьего аргумента `run_simple.sh`).
-- Если том **только чтение** (частый случай с DMG) →  
-  `~/Library/Application Support/LegalTermsAgent/output_simple/results_human.xlsx`  
-  Туда же уходят `.venv` и кэш индекса.
+- Обычный запуск с диска: `<проект>/output_simple/results_human.xlsx`
+- **Запуск с DMG (том только чтение):** Excel кладётся **рядом с файлом `.dmg`**, туда же где `terms.txt` и `dictionaries/`:
+  - `<папка_где_лежит.dmg>/output_simple/results_human.xlsx`
+- Если рядом с `.dmg` писать нельзя (редко) → fallback:  
+  `~/Library/Application Support/LegalTermsAgent/output_simple/`
+
+Венв и кэш индекса при read-only DMG всегда в `~/Library/Application Support/LegalTermsAgent/` (на образ писать нельзя).
 
 ## Команда с нуля
 

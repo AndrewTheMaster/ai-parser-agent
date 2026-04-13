@@ -11,6 +11,11 @@ Terms (.txt), first match wins:
   1) macOS DMG: next to backing .dmg → terms.txt, words.txt, sample_terms.txt, my_terms.txt
   2) <project>/data/sample_terms.txt
   3) <project>/../terms.txt, ../sample_terms.txt, ../words.txt
+
+Default output folder (results_human.xlsx):
+  - Writable project → <project>/output_simple/
+  - Read-only (e.g. DMG) but .dmg found → <dirname(.dmg)>/output_simple/  (same place as terms + dictionaries)
+  - Else → ~/Library/Application Support/LegalTermsAgent/output_simple/
 """
 
 from __future__ import annotations
@@ -95,7 +100,7 @@ def resolve_terms(project: pathlib.Path) -> pathlib.Path | None:
 
 
 def resolve_workroot(project: pathlib.Path) -> pathlib.Path:
-    """Writable root for .venv, .cache, output when project dir is read-only (e.g. DMG)."""
+    """Writable root for .venv and index cache only (not Excel output)."""
     project = project.resolve()
     probe = project / ".legal_agent_write_test"
     try:
@@ -108,9 +113,38 @@ def resolve_workroot(project: pathlib.Path) -> pathlib.Path:
         return home
 
 
+def resolve_output_dir(project: pathlib.Path) -> pathlib.Path:
+    """Where to write results_human.xlsx (prefer next to .dmg when running from a DMG)."""
+    project = project.resolve()
+    try:
+        probe = project / ".legal_agent_write_test"
+        probe.write_text("ok", encoding="utf-8")
+        probe.unlink(missing_ok=True)
+        out = project / "output_simple"
+        out.mkdir(parents=True, exist_ok=True)
+        return out
+    except OSError:
+        pass
+    dmg = _dmg_file_for_path(project)
+    if dmg is not None:
+        parent = dmg.parent
+        try:
+            t = parent / ".legal_agent_output_probe"
+            t.write_text("x", encoding="utf-8")
+            t.unlink()
+            out = parent / "output_simple"
+            out.mkdir(parents=True, exist_ok=True)
+            return out
+        except OSError:
+            pass
+    out = pathlib.Path.home() / "Library" / "Application Support" / "LegalTermsAgent" / "output_simple"
+    out.mkdir(parents=True, exist_ok=True)
+    return out
+
+
 def main() -> int:
     if len(sys.argv) < 3:
-        print("usage: resolve_paths.py dictionary|terms|workroot <project_dir>", file=sys.stderr)
+        print("usage: resolve_paths.py dictionary|terms|workroot|output <project_dir>", file=sys.stderr)
         return 2
     mode = sys.argv[1]
     project = pathlib.Path(sys.argv[2])
@@ -128,6 +162,9 @@ def main() -> int:
         return 0
     if mode == "workroot":
         print(resolve_workroot(project), end="")
+        return 0
+    if mode == "output":
+        print(resolve_output_dir(project), end="")
         return 0
     print(f"unknown mode: {mode}", file=sys.stderr)
     return 2
