@@ -18,6 +18,10 @@ cp .env.example .env
 
 Place dictionary PDFs in any folder. You can point to that folder with `--dictionary-dir`.
 
+## Mac: full setup from scratch + DMG
+
+See [docs/MAC_SETUP.md](docs/MAC_SETUP.md).
+
 ## CLI
 
 ```bash
